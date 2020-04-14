@@ -13,6 +13,7 @@ WORKDIR /build
 RUN git clone https://bitbucket.org/ktakashi/sagittarius-scheme.git \
       sagittarius --depth 1
 WORKDIR /build/sagittarius
+RUN ./dist.sh gen
 RUN cmake . -DCMAKE_INSTALL_PREFIX=/usr/local
 RUN make
 RUN make install
