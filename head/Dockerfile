@@ -1,5 +1,5 @@
 # -*- mode: dockerfile; coding: utf-8 -*-
-FROM debian:buster-slim AS build
+FROM schemers/sagittarius AS build
 RUN apt-get update && apt-get -y --no-install-recommends install \
        build-essential \
        cmake \
