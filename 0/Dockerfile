@@ -1,5 +1,5 @@
 # -*- mode: dockerfile; coding: utf-8 -*-
-FROM debian:buster-slim AS build
+FROM debian:bullseye-slim AS build
 RUN apt-get update && apt-get -y --no-install-recommends install \
        build-essential \
        cmake \
@@ -20,10 +20,10 @@ RUN cmake . -DCMAKE_INSTALL_PREFIX=/usr/local
 RUN make
 RUN make install
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 RUN apt-get update && apt-get -y --no-install-recommends install \
-       libffi6 \
-       libgc1c2 \
+       libffi7 \
+       libgc1 \
        libssl1.1 \
   && rm -rf /var/lib/apt/lists/*
 COPY --from=build /usr/local/ /usr/local/
